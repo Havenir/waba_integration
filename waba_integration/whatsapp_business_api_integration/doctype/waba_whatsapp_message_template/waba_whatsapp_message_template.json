@@ -37,7 +37,7 @@
    "fieldtype": "Section Break"
   },
   {
-   "description": "Supported options header, body, button.",
+   "description": "Supported options header, body, button. It is a JSON code, however you can use frappe commands like frappe.get_doc, frappe.utils.nowdate() etc, just like in a jinja template",
    "documentation_url": "https://developers.facebook.com/docs/whatsapp/on-premises/reference/messages#components-object",
    "fieldname": "components",
    "fieldtype": "Code",
@@ -49,7 +49,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-11-18 00:17:45.908773",
+ "modified": "2024-11-18 10:29:03.994078",
  "modified_by": "Administrator",
  "module": "WhatsApp Business API Integration",
  "name": "WABA WhatsApp Message Template",
