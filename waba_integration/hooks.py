@@ -42,7 +42,7 @@ app_license = "MIT"
 
 # website user home page (by Role)
 # role_home_page = {
-#	"Role": "home_page"
+# "Role": "home_page"
 # }
 
 # Generators
@@ -107,7 +107,7 @@ app_license = "MIT"
 # 		"on_update": "method",
 # 		"on_cancel": "method",
 # 		"on_trash": "method"
-#	}
+# }
 # }
 
 # Scheduled Tasks
@@ -193,3 +193,36 @@ app_license = "MIT"
 # Recommended only for DocTypes which have limited documents with untranslated names
 # For example: Role, Gender, etc.
 # translated_search_doctypes = []
+
+override_doctype_class = {
+    "Notification": "waba_integration.overrides.notification.SendNotification"
+}
+
+extend_bootinfo = "waba_integration.boot.boot_session"
+
+fixtures = [
+    {
+        "dt": "Custom Field",
+        "filters": [
+            [
+                "name",
+                "in",
+                ["Notification-waba_whatsapp_message_template"],
+            ]
+        ],
+    },
+    {
+        "dt": "Property Setter",
+        "filters": [
+            [
+                "name",
+                "in",
+                [
+                    "Notification-channel-options",
+                    "Notification-subject-mandatory_depends_on",
+                    "Notification-subject-depends_on",
+                ],
+            ]
+        ],
+    },
+]

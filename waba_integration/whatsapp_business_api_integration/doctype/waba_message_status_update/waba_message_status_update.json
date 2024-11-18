@@ -44,7 +44,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-05-22 13:21:56.047202",
+ "modified": "2024-11-17 21:53:59.429821",
  "modified_by": "Administrator",
  "module": "WhatsApp Business API Integration",
  "name": "WABA Message Status Update",
@@ -63,6 +63,7 @@
    "write": 1
   }
  ],
+ "read_only": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []

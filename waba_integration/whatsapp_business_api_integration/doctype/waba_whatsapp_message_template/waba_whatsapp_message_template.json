@@ -1,0 +1,76 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "prompt",
+ "creation": "2024-11-18 00:07:37.318988",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "description",
+  "column_break_4tgpl",
+  "language_code",
+  "section_break_st0un",
+  "components"
+ ],
+ "fields": [
+  {
+   "fieldname": "description",
+   "fieldtype": "Data",
+   "label": "Description"
+  },
+  {
+   "fieldname": "column_break_4tgpl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "e.g en_US",
+   "fieldname": "language_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Language Code",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_st0un",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "Supported options header, body, button.",
+   "documentation_url": "https://developers.facebook.com/docs/whatsapp/on-premises/reference/messages#components-object",
+   "fieldname": "components",
+   "fieldtype": "Code",
+   "in_list_view": 1,
+   "label": "Components",
+   "options": "JSON",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-11-18 00:17:45.908773",
+ "modified_by": "Administrator",
+ "module": "WhatsApp Business API Integration",
+ "name": "WABA WhatsApp Message Template",
+ "naming_rule": "Set by user",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "description",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

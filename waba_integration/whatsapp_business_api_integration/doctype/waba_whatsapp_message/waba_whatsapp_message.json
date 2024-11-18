@@ -14,6 +14,7 @@
   "from",
   "to",
   "message_type",
+  "message_template",
   "column_break_3",
   "type",
   "id",
@@ -27,7 +28,12 @@
   "media_caption",
   "media_file",
   "media_image",
-  "media_uploaded"
+  "media_uploaded",
+  "references_section",
+  "document_type",
+  "document_name",
+  "attach_print",
+  "print_format"
  ],
  "fields": [
   {
@@ -75,8 +81,9 @@
   },
   {
    "fieldname": "media_mime_type",
-   "fieldtype": "Data",
-   "label": "Media MIME Type"
+   "fieldtype": "Link",
+   "label": "Media MIME Type",
+   "options": "WABA WhatsApp Media MIME Type"
   },
   {
    "fieldname": "media_filename",
@@ -89,7 +96,7 @@
    "label": "Media Caption"
   },
   {
-   "depends_on": "eval:doc.message_type!=\"Text\"",
+   "depends_on": "eval:![\"Text\", \"Template\"].includes(doc.message_type)",
    "fieldname": "media_information_section",
    "fieldtype": "Section Break",
    "label": "Media Information"
@@ -107,7 +114,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Message Type",
-   "options": "Text\nImage\nAudio\nVideo\nSystem\nDocument"
+   "options": "Text\nImage\nAudio\nVideo\nSystem\nDocument\nTemplate"
   },
   {
    "depends_on": "eval:doc.message_type===\"Text\"",
@@ -163,12 +170,51 @@
    "fieldtype": "Check",
    "label": "Media Uploaded",
    "read_only": 1
+  },
+  {
+   "fieldname": "references_section",
+   "fieldtype": "Section Break",
+   "label": "References"
+  },
+  {
+   "fieldname": "document_type",
+   "fieldtype": "Link",
+   "label": "Document Type",
+   "mandatory_depends_on": "eval: doc.message_type === 'Template'",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "document_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Document Name",
+   "mandatory_depends_on": "eval: doc.message_type === 'Template'",
+   "options": "document_type"
+  },
+  {
+   "depends_on": "eval: doc.message_type === 'Template'",
+   "fieldname": "message_template",
+   "fieldtype": "Link",
+   "label": "Message Template",
+   "mandatory_depends_on": "eval: doc.message_type === 'Template'",
+   "options": "WABA WhatsApp Message Template"
+  },
+  {
+   "fieldname": "print_format",
+   "fieldtype": "Link",
+   "label": "Print Format",
+   "options": "Print Format"
+  },
+  {
+   "default": "0",
+   "fieldname": "attach_print",
+   "fieldtype": "Check",
+   "label": "Attach Print"
   }
  ],
  "image_field": "media_image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-05-26 23:52:27.287967",
+ "modified": "2024-11-18 09:15:43.949063",
  "modified_by": "Administrator",
  "module": "WhatsApp Business API Integration",
  "name": "WABA WhatsApp Message",
@@ -190,5 +236,14 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [
+  {
+   "color": "Green",
+   "title": "Read"
+  },
+  {
+   "color": "Green",
+   "title": "Marked As Seen"
+  }
+ ]
 }

@@ -1,5 +1,5 @@
 import frappe
-from waba_integration.whatsapp_business_api_integration.doctype.waba_whatsapp_message.waba_whatsapp_message import (
+from waba_integration.whatsapp_business_api_integration.doctype.waba_whatsapp_message.waba_whatsapp_message import (  # noqa
     create_waba_whatsapp_message,
     process_status_update,
 )
@@ -14,8 +14,8 @@ def handle():
 
     try:
         form_dict = frappe.local.form_dict
-        messages = form_dict["entry"][0]["changes"][0]["value"].get("messages", [])
-        statuses = form_dict["entry"][0]["changes"][0]["value"].get("statuses", [])
+        messages = form_dict["entry"][0]["changes"][0]["value"].get("messages", [])  # noqa
+        statuses = form_dict["entry"][0]["changes"][0]["value"].get("statuses", [])  # noqa
 
         for status in statuses:
             process_status_update(status)
@@ -24,20 +24,21 @@ def handle():
             create_waba_whatsapp_message(message)
 
         frappe.get_doc(
-            {"doctype": "WABA Webhook Log", "payload": frappe.as_json(form_dict)}
+            {"doctype": "WABA Webhook Log", "payload": frappe.as_json(form_dict)}  # noqa
         ).insert(ignore_permissions=True)
     except Exception:
+        message = frappe.get_traceback()
+        frappe.log_error(title="WABA Webhook Log Error", message=message)
+
         form_dict = frappe.local.form_dict
         frappe.get_doc(
-            {"doctype": "WABA Webhook Log", "payload": frappe.as_json(form_dict)}
+            {"doctype": "WABA Webhook Log", "payload": frappe.as_json(form_dict)}  # noqa
         ).insert(ignore_permissions=True)
-
-        frappe.log_error("WABA Webhook Log Error", frappe.get_traceback())
 
 
 def verify_token_and_fulfill_challenge():
     meta_challenge = frappe.form_dict.get("hub.challenge")
-    expected_token = frappe.db.get_single_value("WABA Settings", "webhook_verify_token")
+    expected_token = frappe.db.get_single_value("WABA Settings", "webhook_verify_token")  # noqa
 
     if frappe.form_dict.get("hub.verify_token") != expected_token:
         frappe.throw("Verify token does not match")

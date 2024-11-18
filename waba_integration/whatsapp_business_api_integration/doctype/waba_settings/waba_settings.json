@@ -6,8 +6,11 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "enabled",
+  "section_break_eojgc",
   "access_token",
   "phone_number_id",
+  "api_version",
   "column_break_4",
   "business_account_id",
   "webhook_verify_token",
@@ -21,22 +24,26 @@
    "fieldname": "access_token",
    "fieldtype": "Password",
    "label": "Access Token",
-   "length": 250
+   "length": 250,
+   "mandatory_depends_on": "enabled"
   },
   {
    "fieldname": "phone_number_id",
    "fieldtype": "Data",
-   "label": "Phone Number ID"
+   "label": "Phone Number ID",
+   "mandatory_depends_on": "enabled"
   },
   {
    "fieldname": "business_account_id",
    "fieldtype": "Data",
-   "label": "Business Account ID"
+   "label": "Business Account ID",
+   "mandatory_depends_on": "enabled"
   },
   {
    "fieldname": "webhook_verify_token",
    "fieldtype": "Data",
-   "label": "Webhook Verify Token"
+   "label": "Webhook Verify Token",
+   "mandatory_depends_on": "enabled"
   },
   {
    "default": "0",
@@ -62,12 +69,28 @@
    "fieldname": "automatically_download_audio",
    "fieldtype": "Check",
    "label": "Automatically Download Audio"
+  },
+  {
+   "default": "0",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "section_break_eojgc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "api_version",
+   "fieldtype": "Data",
+   "label": "API Version",
+   "mandatory_depends_on": "enabled"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2022-05-25 06:04:53.477667",
+ "modified": "2024-11-14 13:23:29.350136",
  "modified_by": "Administrator",
  "module": "WhatsApp Business API Integration",
  "name": "WABA Settings",
