@@ -15,13 +15,14 @@ MEDIA_TYPES = ("image", "sticker", "document", "audio", "video")
 
 
 class WABAWhatsAppMessage(Document):
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """
         Initializes the WABA WhatsApp Message.
 
         The `access_token` is set to `None`, it is set when the access token is
         fetched from the WABA Settings.
         """
+        super().__init__(*args, **kwargs)
         self._access_token = None
 
     def validate(self):
